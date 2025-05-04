@@ -8,7 +8,7 @@ function About() {
     >
       <div className="bg-white border-4 border-white rounded-3xl  w-full max-w-5xl px-1 py-1 lg:p-12 transition   cursor-pointer shadow-white ">
         {/* Heading */}
-        <h1 className="text-4xl md:text-5xl font-extrabold text-center text-gray-800 md:mb-6 mb-3">
+        <h1 className="text-3xl md:text-5xl font-extrabold text-center text-gray-800 md:mb-6 mb-3">
           About <span className="text-amber-500">Me</span>
         </h1>
 

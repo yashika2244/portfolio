@@ -48,17 +48,43 @@ const Projects = () => {
         >
           <div className="lg:w-full lg:max-w-5xl">
             <div className=" ">
-              <p className=" text-[#fcbb38]  font-[700] leading-7 text-[25px] md:text-[30px]">
-                All-in-One Service{" "}
-                <span className=" text-[#d41010] font-[700]">Booking</span>{" "}
-                website
-              </p>
-
+              <div className="md:flex md:justify-between md:items-center md:gap-0 gap-3 ">
+                <div>
+                  <p className="text-[#fcbb38] font-[700] leading-7 text-[25px] md:text-[30px]">
+                    All-in-One Service{" "}
+                    <span className="text-[#d41010] font-[700]">Booking</span>{" "}
+                    website
+                  </p>
+                </div>
+                <div className="hidden md:flex">
+                <a href="https://serivce.vercel.app/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-block">
+                  <button className="bg-amber-400 hover:bg-amber-500 text-black  font-[700] mt-2 md:px-6 md:py-2 px-3 py-2 transition-all duration-300 hover:scale-[0.9] cursor-pointer rounded-3xl md:mr-5 ">
+                    Preview
+                  </button>
+                  </a>
+                </div>
+              </div>
               <div>
                 <div>
-                  <h1 className="text-white text-[20px] font-[700]">
-                    Overview
-                  </h1>
+                  <div className="flex justify-between">
+                    <h1 className="text-white text-[20px] font-[700] mt-2">
+                      Overview
+                    </h1>
+                    <div className="block md:hidden">
+                    <a href="https://serivce.vercel.app/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-block">
+                      <button className="bg-amber-400 hover:bg-amber-500 text-black font-[700] cursor-pointer text-md md:px-6 md:py-2 px-3 py-1 rounded-2xl md:mr-5 mb-3 mt-3 mr-5 ">
+                        Preview
+                      </button>
+                  </a>
+
+                    </div>
+                  </div>
                   <p className="text-gray-400 md:text-[15px]  md:mt-0 leading- ">
                     This service booking application connects users with trusted
                     professionals across various categories such as home repair,

@@ -10,7 +10,7 @@ function Home() {
             <p className=" text-[#fcbb38] font-[700] md:text-[20px]">
               Hey <span className="text-[#f4f4f4] font-[700]">!</span>
             </p>
-            <h1 className="text-[#f4f4f4] text-[27px] leading- md:text-[60px] lg:text-[60px] font-extrabold md:leading- ">
+            <h1 className="text-[#f4f4f4] text-[30px] leading- md:text-[60px] lg:text-[60px] font-extrabold md:leading- ">
               {" "}
               I am <span className="text-[#fcbb38]">Yashika chauhan</span>{" "}
             </h1>
@@ -40,9 +40,9 @@ function Home() {
                 Hire <span className="text-[#f4f4f4] ">Me</span>
               </a>
               <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://serivce.vercel.app/"
+                // target="_blank"
+                // rel="noopener noreferrer"
+                href="#projects"
                 className="text-[#f4f4f4] border border-amber-50  hover:bg-white hover:text-black px-3 py-[5px] transition font-[700] md:px-3 md:py-2 rounded-3xl cursor-pointer"
               >
                 Projects
