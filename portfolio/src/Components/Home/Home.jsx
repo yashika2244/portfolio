@@ -1,5 +1,7 @@
 import React from "react";
 import my_pic from "../../assets/images/my_pic.jpg";
+import my_pic2 from "../../assets/images/my_pic2.jpg"
+import my_pic3 from "../../assets/images/my_pic3.jpg"
 
 function Home() {
   return (
