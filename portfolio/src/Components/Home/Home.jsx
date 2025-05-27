@@ -1,7 +1,7 @@
 import React from "react";
 import my_pic from "../../assets/images/my_pic.jpg";
 import my_pic2 from "../../assets/images/my_pic2.jpg"
-import my_pic3 from "../../assets/images/my_pic3.jpg"
+import mypic5 from "../../assets/images/mypic5.png"
 
 function Home() {
   return (
@@ -22,7 +22,7 @@ function Home() {
               <figure className="max-w-[300px] w-[290px] hover:shadow-white border-2 border-white    shadow rounded-2xl shadow-white">
                 {" "}
                 <img
-                  src={my_pic}
+                  src={mypic5}
                   alt=""
                   className="cursor-pointer border- border-white  rounded-2xl"
                 />
@@ -55,7 +55,7 @@ function Home() {
           <div className="hidden md:block md:mt-8 w-[380px] h-[380px] rounded-full overflow-hidden border- hover:shadow-white transition border  outline outline-white-500 hover:shadow-xl  duration-300">
             <figure className="w-full h-full rounded-full outline-2 ">
               <img
-                src={my_pic}
+                src={mypic5}
                 alt="Profile"
                 className="w-full h-full object-cover"
               />
