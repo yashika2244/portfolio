@@ -51,8 +51,8 @@ const Projects = () => {
               <div className="md:flex md:justify-between md:items-center md:gap-0 gap-3 ">
                 <div>
                   <p className="text-[#fcbb38] font-[700] leading-7 text-[25px] md:text-[30px]">
-                    All-in-One Service{" "}
-                    <span className="text-[#d41010] font-[700]">Booking</span>{" "}
+                   GetMy
+                    <span className="text-[#d41010] font-[700]">Services</span>{" "}
                     website
                   </p>
                 </div>

@@ -56,9 +56,9 @@ function Home() {
           <div className="hidden md:block md:mt-8 w-[380px] h-[380px] rounded-full overflow-hidden border- hover:shadow-white transition border  outline outline-white-500 hover:shadow-xl  duration-300">
             <figure className="w-full h-full rounded-full outline-2 ">
               <img
-                src={mypic3}
+                src={my5}
                 alt="Profile"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover p-1"
               />
             </figure>
           </div>

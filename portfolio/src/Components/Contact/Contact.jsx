@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Contact() {
   return (
-    <div id="contact" className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+    <div id="contact" className=" bg-gray-100 flex items-center justify-center p-4">
       <div className="w-full max-w-4xl bg-white shadow-md rounded-2xl p-6 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Contact Info Section */}
         <div>
