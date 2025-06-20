@@ -31,7 +31,7 @@ export default function Contact() {
               GitHub
             </a>
             <a
-              href="https://www.linkedin.com/in/yashika-chauhan-46ab49318/"
+              href="https://www.linkedin.com/in/yashika22"
               target="_blank"
               className="mx-4 text-blue-600 hover:text-blue-800"
             >

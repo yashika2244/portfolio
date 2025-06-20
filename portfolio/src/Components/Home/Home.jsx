@@ -2,6 +2,7 @@ import React from "react";
 
 import mypic3 from "../../assets/images/mypic3.jpg"
 import my5 from "../../assets/images/my5.jpg"
+import orPic from "../../assets/images/orPic.jpg"
 
 
 function Home() {
@@ -23,7 +24,7 @@ function Home() {
               <figure className="max-w-[300px] w-[200px] hover:shadow-white border-2 border-white    shadow rounded-2xl shadow-white">
                 {" "}
                 <img
-                  src={my5}
+                  src={orPic}
                   alt=""
                   className="cursor-pointer border- border-white  rounded-2xl"
                 />
@@ -56,9 +57,9 @@ function Home() {
           <div className="hidden md:block md:mt-8 w-[380px] h-[380px] rounded-full overflow-hidden border- hover:shadow-white transition border  outline outline-white-500 hover:shadow-xl  duration-300">
             <figure className="w-full h-full rounded-full outline-2 ">
               <img
-                src={my5}
+                src={orPic}
                 alt="Profile"
-                className="w-full h-full object-cover p-1"
+                className="w-full h-full object-cover "
               />
             </figure>
           </div>
