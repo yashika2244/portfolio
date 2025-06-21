@@ -50,7 +50,7 @@ function About() {
         {/* Download CV Button */}
         <div className="w-full flex justify-center">
           <a
-            href="/Yashika-Chauhan-CV.pdf" // Replace with actual file path
+            href="/YashikaResume.pdf" // Replace with actual file path
             download
             className="bg-amber-500 hover:bg-amber-600 text-white md:px-6 px-4 py-2 lg:py-3 rounded-full font-bold shadow-lg transition transform hover:scale-95"
           >
