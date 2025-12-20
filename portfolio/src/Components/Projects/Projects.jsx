@@ -1,221 +1,215 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import service1 from "../../assets/images/service1.png";
 import service2 from "../../assets/images/service2.png";
 import service4 from "../../assets/images/service4.png";
 import service5 from "../../assets/images/service5.png";
 import service6 from "../../assets/images/service6.png";
-import { useNavigate } from "react-router-dom";
 
-import { useEffect } from "react";
-import { useState } from "react";
+import webcraft1 from "../../assets/images/webcraft1.png";
+import webcraft2 from "../../assets/images/webcraft2.png";
+
+import ramlal1 from "../../assets/images/ramlal1.png";
+import ramlal2 from "../../assets/images/ramlal2.png";
 
 const Projects = () => {
-  const navigate = useNavigate();
+  const [expandIndex, setExpandIndex] = useState(null);
 
-  const [expand, setexpand] = useState(false);
-  const view = () => {
-    setexpand(!expand);
+  const toggleExpand = (i) => {
+    setExpandIndex(expandIndex === i ? null : i);
   };
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const projects = [
+    {
+      title: "GetMyServices Website",
+      url: "https://serivce.vercel.app/",
+      code: "https://github.com/yashika2244/Serivce",
+      images: [service1, service2, service4, service5, service6],
+      overview:
+        "This service booking application connects users with trusted professionals across various categories such as home repair, cleaning, beauty, and wellness. Designed with a user-friendly interface and a secure backend, it simplifies the process of finding, booking, and managing service appointments. Users can explore verified profiles, view ratings and availability, and schedule services in just a few clicks—making everyday tasks more convenient and efficient.",
+      customerFeatures: [
+        "Secure authentication for both users and service providers using JWT-based login.",
+        "Easily find professionals by category, location, ratings, and availability.",
+        "Secure Payments (Optional): Integration with payment gateways for online consultation fees.",
+        "Book services with live availability and receive instant confirmations.",
+        " Both users and providers can manage profiles, update details, and view activity history.",
+      ],
+      providerFeatures: [
+        "Profile Creation: Add specialization, experience, consultation fees, and availability.",
+      ],
+      techStack: ["MongoDB", "Express.js", "React.js", "Node.js"],
+      conclusion:
+        "Our Service Booking Application is designed to revolutionize the booking system...",
+    },
+    {
+      title: "Webcraft UI",
+      url: "https://web-craft-eosin.vercel.app",
+      code: "https://github.com/Prashantpal123/WebCraft",
+      images: [webcraft1, webcraft2],
+      overview:
+        "Webcraft UI is a modern, responsive UI template built for web designers...",
+      customerFeatures: [
+        "Fully responsive web pages that adapt to mobile, tablet, and desktop screens.",
+        "Interactive UI components such as buttons, cards, modals, and sliders.",
+        " Clean typography and design that improves readability and user experience.",
+        "Fast loading and optimized for performance.",
+      ],
+      providerFeatures: ["Easy customization", "Reusable components"],
+      techStack: [
+        "JavaScript",
+        "React.js",
+        "Nodejs",
+        "Express.js",
+        "MongoDB",
+        "Tailwind css",
+      ],
+      conclusion:
+        "Webcraft UI provides a scalable and modern interface for personal and professional websites...",
+    },
+    {
+      title: "Ram-Lal Singh Website",
+      url: "https://ram-lal-singh-chauhan-svm.vercel.app/#",
+      code: "https://github.com/Prashantpal123/RamLal-singh-chauhan-svm",
+      images: [ramlal1, ramlal2],
+      overview:
+        "A professional school website for Ram-Lal Singh to showcase school information, events, and academic programs.Provides students, parents, and staff easy access to school resources online.Focused on clean layout, responsiveness, and easy navigation.",
+      customerFeatures: [
+        "Sections for about the school, events, achievements, and contact information.",
+        "Clean and maintainable code for future enhancements.",
+        "Simple structure to update content like events, notices, and images.",
+        "Easy access to important notices, announcements, and school updates.",
+      ],
+      providerFeatures: ["Easy to update content", "SEO friendly structure"],
+      techStack: [
+        "JavaScript",
+        "React.js",
+        "Nodejs",
+        "Express.js",
+        "MongoDB",
+        "Tailwind css",
+      ],
+      conclusion:
+        "Provides a professional and modern online presence for the school.",
+    },
+  ];
 
-  const Serviceimg = [service1, service2, service4, service5, service6];
+  const [currentIndexes, setCurrentIndexes] = useState(projects.map(() => 0));
 
   useEffect(() => {
-    if (isPaused) return; // Stop auto-slide when paused
-
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % Serviceimg.length);
+      setCurrentIndexes((prev) =>
+        prev.map((index, i) => (index + 1) % projects[i].images.length)
+      );
     }, 3000);
-
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, []);
 
   return (
-    <>
-      <section id="projects" className="lg:pt-23">
-        <h1
-          className="text-[#f4f4f4]  w-full text-center text-[28px] 
-                leading-13 md:text-[40px] lg:text-[50px]  font-extrabold md:leading- "
-        >
-          {" "}
-          Projects
-        </h1>
-        <div
-          className="  lg:flex mx-4  lg:mx-8 gap-4 md:gap-10 md:justify-center mt-3  md:mt-15"
-          id="home"
-        >
-          <div className="lg:w-full lg:max-w-5xl">
-            <div className=" ">
-              <div className="md:flex md:justify-between md:items-center md:gap-0 gap-3 ">
-                <div>
-                  <p className="text-[#fcbb38] font-[700] leading-7 text-[25px] md:text-[30px]">
-                   GetMy
-                    <span className="text-[#d41010] font-[700]">Services</span>{" "}
-                    website
-                  </p>
-                </div>
-                <div className="hidden md:flex">
-                <a href="https://serivce.vercel.app/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-block">
-                  <button className="bg-amber-400 hover:bg-amber-500 text-black  font-[700] mt-2 md:px-6 md:py-2 px-3 py-2 transition-all duration-300 hover:scale-[0.9] cursor-pointer rounded-3xl md:mr-5 ">
+    <section id="projects" className="lg:pt-24 px-4 md:px-8 lg:px-16  py-12">
+      <h1 className="text-white text-center text-3xl md:text-5xl font-extrabold mb-12">
+        My Projects
+      </h1>
+
+      <div className="flex flex-col gap-12">
+        {projects.map((proj, i) => (
+          <div
+            key={i}
+            className="rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 p-6 md:p-8 bg-[#0f172a]"
+          >
+            <div className="md:flex md:justify-between md:items-center gap-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-amber-400">
+                {proj.title}
+              </h2>
+              <div className="flex gap-2 mt-3 md:mt-0">
+                <a href={proj.url} target="_blank" rel="noopener noreferrer">
+                  <button className="bg-amber-400 hover:bg-amber-500 text-black font-semibold px-5 py-2 rounded-full transition transform hover:scale-105">
                     Preview
                   </button>
-                  </a>
-                </div>
-              </div>
-              <div>
-                <div>
-                  <div className="flex justify-between">
-                    <h1 className="text-white text-[20px] font-[700] mt-2">
-                      Overview
-                    </h1>
-                    <div className="block md:hidden">
-                    <a href="https://serivce.vercel.app/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-block">
-                      <button className="bg-amber-400 hover:bg-amber-500 text-black font-[700] cursor-pointer text-md md:px-6 md:py-2 px-3 py-1 rounded-2xl md:mr-5 mb-3 mt-3 mr-5 ">
-                        Preview
-                      </button>
-                  </a>
-
-                    </div>
-                  </div>
-                  <p className="text-gray-400 md:text-[15px]  md:mt-0 leading- ">
-                    This service booking application connects users with trusted
-                    professionals across various categories such as home repair,
-                    cleaning, beauty, and wellness. Designed with a
-                    user-friendly interface and a secure backend, it simplifies
-                    the process of finding, booking, and managing service
-                    appointments. Users can explore verified profiles, view
-                    ratings and availability, and schedule services in just a
-                    few clicks—making everyday tasks more convenient and
-                    efficient.
-                  </p>
-                </div>
-
-                <div className="">
-                  <div
-                    className={` md:block max-w-[900px] rounded-2xl md:mt-5 overflow-hidden mt-`}
-                  >
-                    {" "}
-                    <figure
-                      style={{
-                        transform: `translateX(-${currentIndex * 100}%)`,
-                      }}
-                      className="max-w-[900px]  relative   
-                          flex transition-transform duration-1000 ease-in-out shadow  rounded-3xl shadow-amber-400"
-                    >
-                      {" "}
-                      {Serviceimg.map((img, index) => (
-                        <img key={index} className="  " src={img} alt="" />
-                      ))}
-                    </figure>
-                  </div>
-                </div>
-
-                <div className={`mt-4  `}>
-                  <h1 className="text-white text-[20px] font-[700]">
-                    Key features
-                  </h1>
-                  <h2 className="text-[#fcbb38] font-semibold text-[18px]">
-                    For Customer :
-                  </h2>
-                  <p className="text-gray-400 md:text-[15px]  md:mt-0 leading- ">
-                    ✅ Secure authentication for both users and service
-                    providers using JWT-based login. <br />
-                    ✅Easily find professionals by category, location, ratings,
-                    and availability. <br />
-                    ✅Book services with live availability and receive instant
-                    confirmations. <br />
-                    ✅ Track past and upcoming bookings for better planning and
-                    organization.
-                    <br />
-                    ✅ Users can rate and review service providers to ensure
-                    quality and trust. <br />
-                    ✅ Both users and providers can manage profiles, update
-                    details, and view activity history. <br />✅ Secure Payments
-                    (Optional): Integration with payment gateways for online
-                    consultation fees.
-                  </p>
-                </div>
-
-                <div className={expand ? "block" : "hidden"}>
-                  <h2 className="text-[#fcbb38] font-semibold text-[18px]">
-                    For Service Providers :
-                  </h2>
-                  <p className="text-gray-400 md:text-[15px]  md:mt-0 leading- ">
-                    ✅ Profile Creation: Add specialization, experience,
-                    consultation fees, and availability. <br />
-                    ✅ Booking Management: Accept, decline, or reschedule client
-                    appointments. <br />
-                    ✅Use modals for viewing appointment details and form inputs
-                    for rescheduling. <br />
-                    ✅ Review & Ratings: Gain credibility through client
-                    feedback and reviews. <br />
-                  </p>
-                </div>
-
-                <div className={` mt-4 ${expand ? "block" : "hidden"}`}>
-                  <h1 className="text-white text-[20px] font-[700]">
-                    Technology Stack (MERN)
-                  </h1>
-                  <p className="text-gray-400 md:text-[15px]  md:mt-0 leading- ">
-                    ✅ MongoDB: Stores user, doctor, and appointment data
-                    efficiently. <br />
-                    ✅ Express.js: Handles backend logic, routes, and API
-                    endpoints. <br />
-                    ✅ React.js: Provides a dynamic and responsive frontend for
-                    a smooth user experience. <br />
-                    ✅ Node.js: Manages server-side logic and handles requests
-                    efficiently. <br />
-                  </p>
-                </div>
-
-                <div className={` mt-4 ${expand ? "block" : "hidden"}`}>
-                  <h1 className="text-white text-[20px] font-[700]">
-                    Conclusion
-                  </h1>
-                  <p className="text-gray-400 md:text-[15px]  md:mt-0 leading- ">
-                    Our Service Booking Application is designed to revolutionize
-                    the booking system by making it more convenient for customer
-                    and efficient for service-povider. With its user-centric
-                    approach and scalable architecture, this platform ensures a
-                    seamless servicing consultation experience.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex md:gap-8 gap-4 mt-3">
-                <button
-                  onClick={view}
-                  className="bg-[#187895] font-[700] px-2 md:px-4 md:py-2 py-1 border  border-amber-50   rounded-3xl cursor-pointer"
-                >
-                  View <span className="text-[#f4f4f4] ">More</span>
-                </button>
-                {/* <button className="text-[#f4f4f4] border hover:bg-white hover:text-black hover:border-black border-amber-50 font-[700] px-5 py-2 rounded-3xl cursor-pointer">
-                Code
-              </button> */}
-                <a
-                  href="https://github.com/yashika2244/Serivce"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block"
-                >
-                  <button className="text-[#f4f4f4] border border-amber-50 font-bold px-5 py-2 rounded-3xl cursor-pointer hover:bg-white hover:text-black hover:border-black text-sm sm:text-base whitespace-nowrap">
+                </a>
+                <a href={proj.code} target="_blank" rel="noopener noreferrer">
+                  <button className="border border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-black font-semibold px-5 py-2 rounded-full transition transform hover:scale-105">
                     Code
                   </button>
                 </a>
               </div>
             </div>
+
+            {/* Overview */}
+            <div className="mt-6">
+              <h3 className="text-white font-semibold text-lg">Overview</h3>
+              <p className="text-gray-400 mt-2 leading-6">{proj.overview}</p>
+            </div>
+
+            {/* Carousel */}
+            <div className="mt-6 relative overflow-hidden rounded-2xl shadow-lg">
+              <div
+                className="flex transition-transform duration-1000"
+                style={{
+                  transform: `translateX(-${currentIndexes[i] * 100}%)`,
+                }}
+              >
+                {proj.images.map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={img}
+                    alt={`${proj.title}-${idx}`}
+                    className="w-full object-cover rounded-2xl"
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Features */}
+            <div className="mt-6 grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="text-amber-400 font-semibold">For Customers</h4>
+                <ul className="text-gray-400 list-disc list-inside mt-2">
+                  {proj.customerFeatures.map((f, idx) => (
+                    <li key={idx}>{f}</li>
+                  ))}
+                </ul>
+              </div>
+              {expandIndex === i && (
+                <div>
+                  <h4 className="text-amber-400 font-semibold">
+                    For Service Providers
+                  </h4>
+                  <ul className="text-gray-400 list-disc list-inside mt-2">
+                    {proj.providerFeatures.map((f, idx) => (
+                      <li key={idx}>{f}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+
+            {/* Tech Stack & Conclusion */}
+            {expandIndex === i && (
+              <div className="mt-6 grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="text-white font-semibold">Tech Stack</h4>
+                  <p className="text-gray-400 mt-2">
+                    {proj.techStack.join(", ")}
+                  </p>
+                </div>
+                <div>
+                  <h4 className="text-white font-semibold">Conclusion</h4>
+                  <p className="text-gray-400 mt-2">{proj.conclusion}</p>
+                </div>
+              </div>
+            )}
+
+            <div className="mt-6">
+              <button
+                onClick={() => toggleExpand(i)}
+                className="bg-[#187895] text-white font-semibold px-4 py-2 rounded-full hover:bg-[#0f94b6] transition transform hover:scale-105"
+              >
+                {expandIndex === i ? "View Less" : "View More"}
+              </button>
+            </div>
           </div>
-        </div>
-      </section>
-    </>
+        ))}
+      </div>
+    </section>
   );
 };
 

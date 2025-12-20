@@ -1,71 +1,103 @@
 import React from "react";
-
-import mypic3 from "../../assets/images/mypic3.jpg"
-import my5 from "../../assets/images/my5.jpg"
-import orPic from "../../assets/images/orPic.jpg"
-
+import { motion } from "framer-motion";
+import po1 from "../../assets/images/po1.jpg";
 
 function Home() {
+  const name = "Yashika Chauhan".split(""); // split into letters
+
   return (
-    <>
-      <section id="home" className=" text-white    flex justify-center">
-        <div className="  flex mx-4 md:mx-8 gap-4 md:gap-20 md:justify-center md:mt-20">
-          <div className="md:mt-16 mt-7">
-            <p className=" text-[#fcbb38] font-[700] md:text-[20px]">
-              Hey <span className="text-[#f4f4f4] font-[700]">!</span>
-            </p>
-            <h1 className="text-[#f4f4f4] text-[30px] leading- md:text-[60px] lg:text-[60px] font-extrabold md:leading- ">
-              {" "}
-              I am <span className="text-[#fcbb38]">Yashika chauhan</span>{" "}
-            </h1>
+    <section
+      id="home"
+      className="min-h-screen text-white flex items-center justify-center px-4 md:px-8"
+    >
+      <div className="flex flex-col-reverse md:flex-row items-center gap-10 md:gap-20 max-w-6xl w-full">
+        {/* LEFT CONTENT */}
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center md:text-left"
+        >
+          <p className="text-[#fcbb38] font-bold text-lg md:text-xl">
+            Hey <span className="text-white">!</span>
+          </p>
 
-            <div className="block md:hidden ">
-              {" "}
-              <figure className="max-w-[300px] w-[200px] hover:shadow-white border-2 border-white    shadow rounded-2xl shadow-white">
-                {" "}
-                <img
-                  src={orPic}
-                  alt=""
-                  className="cursor-pointer border- border-white  rounded-2xl"
-                />
-              </figure>
-            </div>
-            <h1 className="text-slate-300 md:text-[25px] mt-2 md:mt-8 ">
-              Mern Stack Web-Developer
-            </h1>
-            <h1 className="text-slate-300 md:text-[19px] text-[13px] md:mt-2  ">
-              Crafting Scalable & Modern Web Applications !
-            </h1>
-            <div className="flex md:gap-8 gap-4 mt-3 md:mt-6 ">
-              <a
-                href="#contact"
-                className="bg-[#fcbb38] font-[700]  px-2 hover:bg-[#e0a728] py-1 text-black transition md:px-4 md:py-2 border border-amber-50   rounded-3xl cursor-pointer"
+          <h1 className="text-3xl md:text-6xl font-extrabold mt-2 leading-tight flex flex-wrap">
+            I am{" "}
+            {name.map((letter, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 0.05 * index,
+                  type: "spring",
+                  stiffness: 100,
+                }}
+                className="text-[#fcbb38] inline-block"
               >
-                Hire <span className="text-[#f4f4f4] ">Me</span>
-              </a>
-              <a
-                // target="_blank"
-                // rel="noopener noreferrer"
-                href="#projects"
-                className="text-[#f4f4f4] border border-amber-50  hover:bg-white hover:text-black px-3 py-[5px] transition font-[700] md:px-3 md:py-2 rounded-3xl cursor-pointer"
-              >
-                Projects
-              </a>
-            </div>
-          </div>
+                {letter === " " ? "\u00A0" : letter}
+              </motion.span>
+            ))}
+          </h1>
 
-          <div className="hidden md:block md:mt-8 w-[380px] h-[380px] rounded-full overflow-hidden border- hover:shadow-white transition border  outline outline-white-500 hover:shadow-xl  duration-300">
-            <figure className="w-full h-full rounded-full outline-2 ">
-              <img
-                src={orPic}
-                alt="Profile"
-                className="w-full h-full object-cover "
-              />
-            </figure>
+          <h2 className="text-slate-300 text-lg md:text-2xl mt-4">
+            MERN Stack Web Developer
+          </h2>
+
+          <p className="text-slate-400 text-sm md:text-base mt-2 max-w-md">
+            Crafting scalable, clean & modern web applications with great user
+            experience.
+          </p>
+
+          {/* BUTTONS */}
+          <div className="flex justify-center md:justify-start gap-4 md:gap-6 mt-6">
+            <motion.a
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              href="#contact"
+              className="bg-[#fcbb38] text-black font-bold px-5 py-2 rounded-full hover:bg-[#e0a728] transition"
+            >
+              Hire <span className="text-white">Me</span>
+            </motion.a>
+
+            <motion.a
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              href="#projects"
+              className="border border-white text-white font-bold px-5 py-2 rounded-full hover:bg-white hover:text-black transition"
+            >
+              Projects
+            </motion.a>
           </div>
-        </div>
-      </section>
-    </>
+        </motion.div>
+
+        {/* RIGHT IMAGE */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative w-[300px] h-[360px] md:w-[420px] md:h-[400px]
+    rounded-3xl flex items-center justify-center shadow-xl"
+        >
+          {/* Decorative dots */}
+          <span className="absolute top-6 left-6 w-2 h-2 bg-indigo-400 rounded-full"></span>
+          <span className="absolute bottom-8 right-8 w-2 h-2 bg-purple-400 rounded-full"></span>
+          <span className="absolute top-1/2 right-4 w-1.5 h-1.5 bg-cyan-400 rounded-full"></span>
+
+          <span className="absolute w-12 h-12 bg-cyan-400 rounded-full bottom-10 blur-md opacity-70"></span>
+
+          {/* Image wrapper */}
+          <div className="w-[80%] h-[85%] bg-white rounded-2xl flex items-center justify-center">
+            <img
+              src={po1}
+              alt="Profile"
+              className="w-full h-full object-cover object-top rounded-2xl"
+            />
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 }
 

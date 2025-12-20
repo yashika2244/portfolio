@@ -44,7 +44,6 @@ function About() {
               chauhanyashika820@gmail.com
             </span>
           </div>
-
         </div>
 
         {/* Download CV Button */}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link as ScrollLink } from "react-scroll"; // renamed to avoid conflict with react-router
+import { Link as ScrollLink } from "react-scroll";
 import { IoMdMenu } from "react-icons/io";
 
 export default function Header() {
@@ -17,46 +17,57 @@ export default function Header() {
 
   return (
     <>
-      <section
+      {/* HEADER */}
+      <header
         style={{
           background: "linear-gradient(to right, #1a202c, #2d3748, #000000)",
         }}
-        className="sticky top-0 md:p-1 pl-4 z-50 w-full    md:mx-0"
+        className="sticky top-0 z-50 w-full"
       >
-        <div className="header flex container md:items-center  justify-between md:gap-[150px] lg:justify-center lg:gap-72 w-full">
-          <h1 className="text-[#f4f4f4] font-bold md:ml-16  text-2xl ">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+
+          {/* LOGO */}
+          <h1 className="text-[#f4f4f4] font-bold text-xl md:text-2xl">
             Yashika Chauhan
           </h1>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <IoMdMenu onClick={toggleSidebar} className="text-white text-3xl" />
-          </div>
+          {/* MOBILE MENU */}
+          <button
+            onClick={toggleSidebar}
+            className="md:hidden text-white text-3xl focus:outline-none"
+          >
+            <IoMdMenu />
+          </button>
 
-          {/* Desktop navigation */}
-          <div className="justify-center hidden md:block">
-            <ul className="flex gap-[20px] lg:gap-[50px] h-full  mt-3">
+          {/* DESKTOP NAV */}
+          <nav className="hidden md:block">
+            <ul className="flex items-center gap-6 lg:gap-12">
               {navItems.map((item) => (
-                <li key={item.path}>
+                <li key={item.path} className="relative group">
                   <ScrollLink
                     to={item.path}
-                    smooth={true}
+                    smooth
                     duration={500}
                     offset={-70}
-                    className="text-white font-[700] hover:text-[#fcbb38] hover:scale-110 transition-transform cursor-pointer"
+                    spy
+                    activeClass="text-[#fcbb38]"
+                    className="text-white font-semibold cursor-pointer transition-colors"
                   >
                     {item.name}
                   </ScrollLink>
+
+                  {/* underline */}
+                  <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#fcbb38] transition-all duration-300 group-hover:w-full" />
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
         </div>
-      </section>
+      </header>
 
-      {/* Sidebar */}
+      {/* SIDEBAR */}
       <div
-        className={`fixed top-0 left-0 w-64 h-full bg-gray-900 text-white p-5 transform transition-transform duration-300 z-50 ${
+        className={`fixed top-0 left-0 w-64 h-full bg-gray-900 text-white p-6 transform transition-transform duration-300 z-50 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -66,16 +77,17 @@ export default function Header() {
         >
           ✖
         </button>
-        <ul className="mt-10 space-y-4">
+
+        <ul className="mt-16 space-y-5">
           {navItems.map((item) => (
             <li key={item.path}>
               <ScrollLink
                 to={item.path}
-                smooth={true}
+                smooth
                 duration={500}
                 offset={-70}
                 onClick={toggleSidebar}
-                className="block p-2 hover:bg-gray-700 cursor-pointer"
+                className="block px-3 py-2 rounded hover:bg-gray-700 cursor-pointer transition"
               >
                 {item.name}
               </ScrollLink>
@@ -84,7 +96,7 @@ export default function Header() {
         </ul>
       </div>
 
-      {/* Dark overlay */}
+      {/* OVERLAY */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black opacity-50 z-40"

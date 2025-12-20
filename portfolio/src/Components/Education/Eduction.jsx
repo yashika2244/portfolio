@@ -1,92 +1,104 @@
 import React from "react";
+import { motion } from "framer-motion";
 
-function Eduction() {
+function Education() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.3 } },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const educationData = [
+    {
+      year: "2023-2026",
+      title: "Bachelor of Computer Applications (BCA)",
+      institute: "IFTM University [Moradabad]",
+      desc: "Pursuing BCA with focus on Web Development, MERN Stack, C++, Git/GitHub, OS, and DSA. Aim: Career in Full-Stack Development & Software Engineering.",
+    },
+    {
+      year: "2023-2024",
+      title: "Certifications",
+      descItems: [
+        { name: "Tailwind CSS Bootcamp", note: "Level up styling skills" },
+        { name: "JavaScript Bootcamp", note: "Deep dive into JS fundamentals" },
+      ],
+    },
+    {
+      year: "2022-2023",
+      title: "Intermediate (12th)",
+      institute: "Uttar Pradesh Board",
+      desc: "Completed 12th with Mathematics, Physics, Chemistry, Hindi & English. Strong foundation in analytical thinking & problem solving.",
+    },
+  ];
+
   return (
-    <>
-      <section id="education" className="">
-        <h1 className="text-[#f4f4f4] w-full text-center text-[28px]  pt-3 leading-13 md:text-[40px] lg:text-[50px]  font-extrabold md:leading- ">
-          {" "}
-          Education
-        </h1>
-        <div className=" md:flex-row flex flex-col items-center  justify-center md:gap-7 mx-4 gap-4 lg:gap-10 mt-5 lg:mt-8">
-          <div className="bg-[#1a1a1a] rounded-2xl max-w-[350px] transform transition duration-300 hover:scale-110 hover:shadow-2xl">
-            <h1 className="mx-3 text-[#d41010] font-black mb-1">2023-2026</h1>
-            <div className=" bg-[#fcbb38] mx-3 rounded-md mb-1">
-              {" "}
-              <h1
-                className=" text-border p-1  border-red-500
-                        font-bold"
-              >
-                Bachelor of Computer Applications (BCA)
-              </h1>{" "}
-            </div>
-            <h1 className="mx-3 text-white text-[12px]">
-              IFTM UNIVERSITY [ Moradabad ]
-            </h1>
-            <p className="mx-3 text-gray-800 bg-white p-1 mb-2 mt-1 rounded text-[13px] font-[500] md:text-[15px]">
-              I am pursuing a Bachelor of Computer Applications (BCA) with a
-              focus on web development, MERN stack, C++, Git/GitHub, operating
-              systems, and DSA, aiming to build a career in full-stack
-              development and software engineering.
-            </p>
-          </div>
-          <div className="bg-[#1a1a1a] rounded-2xl w-full  lg:min-w-[350px]  max-w-[350px] transform transition duration-300 hover:scale-110 hover:shadow-2xl">
-            <h1 className="mx-3 text-[#d41010] font-black mb-1">2023-2024</h1>
-            <div className=" bg-[#fcbb38] mx-3  rounded-md mb-1 ">
-              {" "}
-              <h1
-                className=" text-border p-1  border-red-500
-                        font-bold"
-              >
-                Certification
-              </h1>{" "}
+    <section id="education" className="py-16 bg-[#111111]">
+      <motion.h2
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-white text-4xl md:text-5xl font-extrabold text-center mb-12"
+      >
+        Education <span className="text-orange-400"> &</span> Certifications
+      </motion.h2>
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="relative max-w-6xl mx-auto grid gap-y-10 gap-x-8 md:grid-cols-2"
+      >
+        {educationData.map((edu, idx) => (
+          <motion.div
+            key={idx}
+            variants={cardVariants}
+            whileHover={{ scale: 1.03 }}
+            className="flex flex-col md:flex-row items-start md:items-center md:space-x-6"
+          >
+            {/* Year badge */}
+            <div className="flex-shrink-0 w-24 h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-[#fcbb38] to-[#d41010] text-black font-bold shadow-lg mb-3 md:mb-0">
+              {edu.year}
             </div>
 
-            <div className="mx-3 text-gray-800 mb-5 bg-white p-2  mt-5 rounded text-[10px] md:text-[15px]">
-              <div className="bg-[#07621b] rounded ">
-                <h1 className="text-white font-black mx-1">
-                  Tailwind Css Bootcamp
-                </h1>
-                <p className="text-[#030202] pb-1 font-semibold mx-1 text-[12px]">
-                  lets upgrade
-                </p>
-              </div>
-
-              <div className="bg-[#07621b] rounded mt-2 ">
-                <h1 className="text-white font-black mx-1">
-                  Javascript Bootcamp
-                </h1>
-                <p className="text-[#030202] pb-1 font-semibold mx-1 text-[12px]">
-                  lets upgrade
-                </p>
-              </div>
+            {/* Card content */}
+            <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl w-full md:max-w-md border-l-4 border-[#fcbb38]">
+              <h3 className="text-white font-bold text-xl md:text-2xl mb-2">
+                {edu.title}
+              </h3>
+              {edu.institute && (
+                <h4 className="text-gray-400 italic text-sm md:text-base mb-3">
+                  {edu.institute}
+                </h4>
+              )}
+              {edu.desc && (
+                <p className="text-gray-200 text-sm md:text-base">{edu.desc}</p>
+              )}
+              {edu.descItems &&
+                edu.descItems.map((item, i) => (
+                  <div
+                    key={i}
+                    className="bg-[#07621b] rounded p-3 mt-3 hover:bg-[#0a831f] transition-colors"
+                  >
+                    <h5 className="text-white font-semibold">{item.name}</h5>
+                    <p className="text-gray-100 text-xs mt-1">{item.note}</p>
+                  </div>
+                ))}
             </div>
-          </div>
-          <div className="bg-[#1a1a1a] rounded-2xl max-w-[350px]  transform transition duration-300 hover:scale-110 hover:shadow-2xl">
-            <h1 className="mx-3 text-[#d41010] font-black mb-1">2022-2023</h1>
-            <div className=" bg-amber-500 mx-3 rounded-md mb-1">
-              {" "}
-              <h1
-                className=" text-border p-1  border-red-500
-                        font-bold"
-              >
-                Intermediate (12th)
-              </h1>{" "}
-            </div>
-
-            <h1 className="mx-3 text-white text-[12px]">Uttar Pradesh</h1>
-
-            <p className="mx-3 text-gray-800 bg-white p-1 mb-2 mt-1 rounded text-[13px] font-[500] md:text-[15px]">
-              I have completed my 12th grade from the Uttar Pradesh Board,
-              specializing in Mathematics, Physics, Chemistry, Hindi, and
-              English. This education has provided me with a strong foundation
-              in analytical thinking, problem-solving, and scientific concepts.
-            </p>
-          </div>
-        </div>
-      </section>
-    </>
+          </motion.div>
+        ))}
+      </motion.div>
+    </section>
   );
 }
 
-export default Eduction;
+export default Education;
