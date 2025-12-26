@@ -7,7 +7,6 @@ import Projects from "./Components/Projects/Projects";
 import Skills from "./Components/Skills/Skills";
 import Contact from "./Components/Contact/Contact";
 import { Toaster } from "react-hot-toast";
-// import Layout from './Layout/Layout'
 import "./App.css";
 import Experience from "./Components/Experience/Experience";
 

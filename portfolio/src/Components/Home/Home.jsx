@@ -22,8 +22,12 @@ function Home() {
             Hey <span className="text-white">!</span>
           </p>
 
-          <h1 className="text-3xl md:text-6xl font-extrabold mt-2 leading-tight flex flex-wrap">
-            I am{" "}
+          <h1
+            className="text-center md:text-left text-3xl md:text-6xl font-extrabold mt-2 leading-tight
+             flex flex-wrap justify-center md:justify-start"
+          >
+            <span className="mr-2 md:mr-3">I am</span>
+
             {name.map((letter, index) => (
               <motion.span
                 key={index}
@@ -77,7 +81,7 @@ function Home() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative w-[300px] h-[360px] md:w-[420px] md:h-[400px]
+          className="relative w-[300px] h-[280px] md:w-[420px] md:h-[400px]
     rounded-3xl flex items-center justify-center shadow-xl"
         >
           {/* Decorative dots */}
@@ -85,7 +89,6 @@ function Home() {
           <span className="absolute bottom-8 right-8 w-2 h-2 bg-purple-400 rounded-full"></span>
           <span className="absolute top-1/2 right-4 w-1.5 h-1.5 bg-cyan-400 rounded-full"></span>
 
-          <span className="absolute w-12 h-12 bg-cyan-400 rounded-full bottom-10 blur-md opacity-70"></span>
 
           {/* Image wrapper */}
           <div className="w-[80%] h-[85%] bg-white rounded-2xl flex items-center justify-center">

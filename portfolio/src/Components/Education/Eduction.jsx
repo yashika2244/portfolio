@@ -40,7 +40,7 @@ function Education() {
   ];
 
   return (
-    <section id="education" className="py-16 bg-[#111111]">
+    <section id="education" className="py-16 ">
       <motion.h2
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ function Education() {
             </div>
 
             {/* Card content */}
-            <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl w-full md:max-w-md border-l-4 border-[#fcbb38]">
+            <div className="hover:bg-gray-700 bg-gray-800 transition-all ease-in-out duration-300 p-6 rounded-2xl shadow-xl w-full md:max-w-md border-l-4 border-[#fcbb38]">
               <h3 className="text-white font-bold text-xl md:text-2xl mb-2">
                 {edu.title}
               </h3>
