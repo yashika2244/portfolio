@@ -2,61 +2,74 @@ import React from "react";
 import Header from "./Header/Header";
 import Home from "./Components/Home/Home";
 import About from "./Components/About/About";
-import Eduction from "./Components/Education/Eduction";
-import Projects from "./Components/Projects/Projects";
 import Skills from "./Components/Skills/Skills";
+import Projects from "./Components/Projects/Projects";
+import Experience from "./Components/Experience/Experience";
+import Education from "./Components/Education/Eduction";
+import ResumeCTA from "./Components/Resume/ResumeCTA";
 import Contact from "./Components/Contact/Contact";
+import Footer from "./Components/Footer/Footer";
 import { Toaster } from "react-hot-toast";
 import "./App.css";
-import Experience from "./Components/Experience/Experience";
 
 function App() {
   return (
-    <>
+    <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col antialiased">
       <Toaster
         position="top-center"
         reverseOrder={false}
         gutter={8}
-        containerClassName=""
         toastOptions={{
           duration: 4000,
           style: {
-            background: "#1f2937",
-            color: "#f9fafb", // light text
+            background: "#ffffff",
+            color: "#0f172a",
             fontSize: "14px",
-            padding: "12px 16px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 14px rgba(0,0,0,0.15)",
+            fontWeight: "500",
+            padding: "12px 18px",
+            borderRadius: "14px",
+            border: "1px solid #e2e8f0",
+            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04)",
           },
           success: {
             iconTheme: {
-              primary: "#22c55e", // green icon
-              secondary: "#fff",
+              primary: "#2563eb",
+              secondary: "#ffffff",
             },
           },
           error: {
             iconTheme: {
-              primary: "#ef4444", // red icon
-              secondary: "#fff",
+              primary: "#ef4444",
+              secondary: "#ffffff",
             },
           },
           loading: {
             iconTheme: {
-              primary: "#3b82f6", // blue spinner
-              secondary: "#fff",
+              primary: "#2563eb",
+              secondary: "#ffffff",
             },
           },
         }}
       />
+      
+      {/* Sticky Navigation */}
       <Header />
-      <Home />
-      <About />
-      <Eduction />
-      <Experience />
-      <Projects />
-      <Skills />
-      <Contact />
-    </>
+
+      {/* Main Content Sections */}
+      <main className="grow">
+        <Home />
+        <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Education />
+        <ResumeCTA />
+        <Contact />
+      </main>
+
+      {/* Modern Footer */}
+      <Footer />
+    </div>
   );
 }
 

@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { ExternalLink, Github, ArrowUpRight, CheckCircle2, Sparkles, Layers } from "lucide-react";
+
 import service1 from "../../assets/images/service1.png";
 import service2 from "../../assets/images/service2.png";
 import service4 from "../../assets/images/service4.png";
@@ -11,206 +14,363 @@ import webcraft2 from "../../assets/images/webcraft2.png";
 import ramlal1 from "../../assets/images/ramlal1.png";
 import ramlal2 from "../../assets/images/ramlal2.png";
 
-const Projects = () => {
-  const [expandIndex, setExpandIndex] = useState(null);
-
-  const toggleExpand = (i) => {
-    setExpandIndex(expandIndex === i ? null : i);
-  };
+export default function Projects() {
+  const [activeFilter, setActiveFilter] = useState("All");
 
   const projects = [
     {
-      title: "GetMyServices Website",
-      url: "https://serivce.vercel.app/",
-      code: "https://github.com/yashika2244/Serivce",
-      images: [service1, service2, service4, service5, service6],
-      overview:
-        "This service booking application connects users with trusted professionals across various categories such as home repair, cleaning, beauty, and wellness. Designed with a user-friendly interface and a secure backend, it simplifies the process of finding, booking, and managing service appointments. Users can explore verified profiles, view ratings and availability, and schedule services in just a few clicks—making everyday tasks more convenient and efficient.",
-      customerFeatures: [
-        "Secure authentication for both users and service providers using JWT-based login.",
-        "Easily find professionals by category, location, ratings, and availability.",
-        "Secure Payments (Optional): Integration with payment gateways for online consultation fees.",
-        "Book services with live availability and receive instant confirmations.",
-        " Both users and providers can manage profiles, update details, and view activity history.",
+      id: "fms",
+      title: "Force Management System (FMS)",
+      tagline: "Enterprise Operational Management & Duty Allocation",
+      category: "Full Stack",
+      featured: true,
+      description:
+        "A full-stack enterprise workforce dashboard built at PM Enterprises to manage personnel scheduling, duty logging, and service tracking with role-based access control.",
+      highlights: [
+        "Built responsive administrative dashboards with dynamic analytics and status filters.",
+        "Engineered RESTful endpoints in Node.js & Express for real-time duty assignments.",
+        "Designed optimized MongoDB schemas for users, tasks, and audit logs.",
+        "Enhanced state management for frictionless pagination across large datasets."
       ],
-      providerFeatures: [
-        "Profile Creation: Add specialization, experience, consultation fees, and availability.",
-      ],
-      techStack: ["MongoDB", "Express.js", "React.js", "Node.js"],
-      conclusion:
-        "Our Service Booking Application is designed to revolutionize the booking system...",
+      techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "REST APIs"],
+      image: service4,
+      liveUrl: "#", // Placeholder
+      githubUrl: "https://github.com/yashika2244", // Placeholder
+      badge: "Enterprise Flagship",
+      isPlaceholder: true,
     },
     {
+      id: "getmyservices",
+      title: "GetMyServices Platform",
+      tagline: "On-Demand Service Booking Marketplace",
+      category: "Full Stack",
+      featured: false,
+      description:
+        "Comprehensive service marketplace connecting homeowners with verified professionals for repairs, maintenance, and wellness with instant scheduling.",
+      highlights: [
+        "JWT-based dual authentication for customers and service providers.",
+        "Dynamic category filtering, location-based search, and verified reviews.",
+        "Live availability booking calendars and instant confirmation pipelines."
+      ],
+      techStack: ["MongoDB", "Express.js", "React.js", "Node.js", "Tailwind CSS"],
+      image: service1,
+      liveUrl: "https://serivce.vercel.app/",
+      githubUrl: "https://github.com/yashika2244/Serivce",
+      badge: "Featured MERN App",
+      isPlaceholder: false,
+    },
+    {
+      id: "webcraft",
       title: "Webcraft UI",
-      url: "https://web-craft-eosin.vercel.app",
-      code: "https://github.com/Prashantpal123/WebCraft",
-      images: [webcraft1, webcraft2],
-      overview:
-        "Webcraft UI is a modern, responsive UI template built for web designers...",
-      customerFeatures: [
-        "Fully responsive web pages that adapt to mobile, tablet, and desktop screens.",
-        "Interactive UI components such as buttons, cards, modals, and sliders.",
-        " Clean typography and design that improves readability and user experience.",
-        "Fast loading and optimized for performance.",
+      tagline: "Modern UI Kit & Responsive Component System",
+      category: "Frontend",
+      featured: false,
+      description:
+        "A modern, responsive component library and template system crafted to empower web developers to assemble accessible interfaces rapidly.",
+      highlights: [
+        "Fully responsive UI elements adapted for mobile, tablet, and desktop screens.",
+        "Clean typography tokens, accessible contrast, and zero external baggage.",
+        "Production-ready cards, modals, sliders, and navigation headers."
       ],
-      providerFeatures: ["Easy customization", "Reusable components"],
-      techStack: [
-        "JavaScript",
-        "React.js",
-        "Nodejs",
-        "Express.js",
-        "MongoDB",
-        "Tailwind css",
-      ],
-      conclusion:
-        "Webcraft UI provides a scalable and modern interface for personal and professional websites...",
+      techStack: ["React.js", "Tailwind CSS", "JavaScript", "Vite"],
+      image: webcraft1,
+      liveUrl: "https://web-craft-eosin.vercel.app",
+      githubUrl: "https://github.com/Prashantpal123/WebCraft",
+      badge: "UI / UX Kit",
+      isPlaceholder: false,
     },
     {
-      title: "Ram-Lal Singh Website",
-      url: "https://ram-lal-singh-chauhan-svm.vercel.app/#",
-      code: "https://github.com/Prashantpal123/RamLal-singh-chauhan-svm",
-      images: [ramlal1, ramlal2],
-      overview:
-        "A professional school website for Ram-Lal Singh to showcase school information, events, and academic programs.Provides students, parents, and staff easy access to school resources online.Focused on clean layout, responsiveness, and easy navigation.",
-      customerFeatures: [
-        "Sections for about the school, events, achievements, and contact information.",
-        "Clean and maintainable code for future enhancements.",
-        "Simple structure to update content like events, notices, and images.",
-        "Easy access to important notices, announcements, and school updates.",
+      id: "eventora",
+      title: "Eventora – Event Platform",
+      tagline: "Event Discovery, Ticketing & Registration",
+      category: "Full Stack",
+      featured: false,
+      description:
+        "A modern web platform for discovering local conferences, booking tickets, and empowering organizers to manage participant registration smoothly.",
+      highlights: [
+        "Comprehensive event directory with live dates, venues, and ticket types.",
+        "Secure registration pipeline with automated pass confirmation.",
+        "Organizer dashboard for tracking attendance and schedule updates."
       ],
-      providerFeatures: ["Easy to update content", "SEO friendly structure"],
-      techStack: [
-        "JavaScript",
-        "React.js",
-        "Nodejs",
-        "Express.js",
-        "MongoDB",
-        "Tailwind css",
+      techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
+      image: service6,
+      liveUrl: "#", // Placeholder
+      githubUrl: "https://github.com/yashika2244", // Placeholder
+      badge: "Full Stack App",
+      isPlaceholder: true,
+    },
+    {
+      id: "ramlal",
+      title: "Ram-Lal Singh SVM Portal",
+      tagline: "Academic Institution Web Portal",
+      category: "Frontend",
+      featured: false,
+      description:
+        "An official institutional web application for Ram-Lal Singh Chauhan SVM featuring academic programs, notices, achievements, and parent information.",
+      highlights: [
+        "Real-time school notice board and announcement broadcasts.",
+        "Accessible, high-readability design tuned for students and faculty.",
+        "Fast-loading semantic markup with optimized assets and cross-device testing."
       ],
-      conclusion:
-        "Provides a professional and modern online presence for the school.",
+      techStack: ["React.js", "JavaScript", "Tailwind CSS"],
+      image: ramlal1,
+      liveUrl: "https://ram-lal-singh-chauhan-svm.vercel.app/#",
+      githubUrl: "https://github.com/Prashantpal123/RamLal-singh-chauhan-svm",
+      badge: "Web Application",
+      isPlaceholder: false,
     },
   ];
 
-  const [currentIndexes, setCurrentIndexes] = useState(projects.map(() => 0));
+  const filterOptions = ["All", "Full Stack", "Frontend"];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndexes((prev) =>
-        prev.map((index, i) => (index + 1) % projects[i].images.length)
-      );
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  const filteredProjects =
+    activeFilter === "All"
+      ? projects
+      : projects.filter((p) => p.category === activeFilter);
+
+  const featuredProject = filteredProjects.find((p) => p.featured) || filteredProjects[0];
+  const gridProjects = filteredProjects.filter((p) => p.id !== featuredProject?.id);
 
   return (
-    <section id="projects" className="lg:pt-24 px-4 md:px-8 lg:px-16  py-12">
-      <h1 className="text-white text-center text-3xl md:text-5xl font-extrabold mb-12">
-        My Projects
-      </h1>
+    <section id="projects" className="py-24 bg-white relative overflow-hidden">
+      {/* Background ambient accents */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-b from-[#EAF2FF]/60 to-transparent rounded-full blur-3xl -z-10" />
 
-      <div className="flex flex-col gap-12">
-        {projects.map((proj, i) => (
-          <div
-            key={i}
-            className="rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 p-6 md:p-8 bg-[#0f172a]"
-          >
-            <div className="md:flex md:justify-between md:items-center gap-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-amber-400">
-                {proj.title}
-              </h2>
-              <div className="flex gap-2 mt-3 md:mt-0">
-                <a href={proj.url} target="_blank" rel="noopener noreferrer">
-                  <button className="bg-amber-400 hover:bg-amber-500 text-black font-semibold px-5 py-2 rounded-full transition transform hover:scale-105">
-                    Preview
-                  </button>
-                </a>
-                <a href={proj.code} target="_blank" rel="noopener noreferrer">
-                  <button className="border border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-black font-semibold px-5 py-2 rounded-full transition transform hover:scale-105">
-                    Code
-                  </button>
-                </a>
-              </div>
-            </div>
-
-            {/* Overview */}
-            <div className="mt-6">
-              <h3 className="text-white font-semibold text-lg">Overview</h3>
-              <p className="text-gray-400 mt-2 leading-6">{proj.overview}</p>
-            </div>
-
-            {/* Carousel */}
-            <div className="mt-6 relative overflow-hidden rounded-2xl shadow-lg">
-              <div
-                className="flex transition-transform duration-1000"
-                style={{
-                  transform: `translateX(-${currentIndexes[i] * 100}%)`,
-                }}
-              >
-                {proj.images.map((img, idx) => (
-                  <img
-                    key={idx}
-                    src={img}
-                    alt={`${proj.title}-${idx}`}
-                    className="w-full object-cover rounded-2xl"
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Features */}
-            <div className="mt-6 grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="text-amber-400 font-semibold">For Customers</h4>
-                <ul className="text-gray-400 list-disc list-inside mt-2">
-                  {proj.customerFeatures.map((f, idx) => (
-                    <li key={idx}>{f}</li>
-                  ))}
-                </ul>
-              </div>
-              {expandIndex === i && (
-                <div>
-                  <h4 className="text-amber-400 font-semibold">
-                    For Service Providers
-                  </h4>
-                  <ul className="text-gray-400 list-disc list-inside mt-2">
-                    {proj.providerFeatures.map((f, idx) => (
-                      <li key={idx}>{f}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-
-            {/* Tech Stack & Conclusion */}
-            {expandIndex === i && (
-              <div className="mt-6 grid md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="text-white font-semibold">Tech Stack</h4>
-                  <p className="text-gray-400 mt-2">
-                    {proj.techStack.join(", ")}
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-white font-semibold">Conclusion</h4>
-                  <p className="text-gray-400 mt-2">{proj.conclusion}</p>
-                </div>
-              </div>
-            )}
-
-            <div className="mt-6">
-              <button
-                onClick={() => toggleExpand(i)}
-                className="bg-[#187895] text-white font-semibold px-4 py-2 rounded-full hover:bg-[#0f94b6] transition transform hover:scale-105"
-              >
-                {expandIndex === i ? "View Less" : "View More"}
-              </button>
-            </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Eyebrow & Heading */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#EAF2FF] border border-[#1769FF]/20 text-[#1769FF] text-xs font-bold uppercase tracking-wider mb-3">
+            <Sparkles className="w-3 h-3" />
+            <span>MY WORK</span>
           </div>
-        ))}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
+            Selected Projects
+          </h2>
+          <p className="mt-4 text-slate-600 text-base sm:text-lg">
+            A curated collection of full-stack platforms, design systems, and real-world client applications.
+          </p>
+
+          {/* Filter Pills */}
+          <div className="flex items-center justify-center gap-2 mt-8">
+            {filterOptions.map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+                  activeFilter === filter
+                    ? "bg-[#071A33] text-white shadow-[0_4px_12px_rgba(7,26,51,0.2)]"
+                    : "bg-[#EAF2FF]/70 text-[#071A33] hover:bg-[#EAF2FF]"
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* 1. FEATURED HERO PROJECT (LARGE ASYMMETRICAL 2-COLUMN SHOWCASE) */}
+        {featuredProject && (
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-12 bg-white border border-[#EAF2FF] rounded-3xl overflow-hidden shadow-[0_12px_40px_rgba(7,26,51,0.06)] hover:border-[#1769FF]/40 transition-all duration-300 group"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
+              
+              {/* Image side (7 cols) */}
+              <div className="lg:col-span-7 relative aspect-16/10 lg:aspect-auto lg:h-[440px] bg-slate-900 overflow-hidden">
+                <img
+                  src={featuredProject.image}
+                  alt={featuredProject.title}
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#071A33]/80 via-transparent to-transparent" />
+                <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#071A33]/90 text-white backdrop-blur-md border border-[#1769FF]/30 shadow-xs">
+                    {featuredProject.badge}
+                  </span>
+                </div>
+              </div>
+
+              {/* Content side (5 cols) */}
+              <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between h-full bg-white">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#1769FF]">
+                    {featuredProject.tagline}
+                  </span>
+                  
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-[#071A33] mt-1 mb-3 group-hover:text-[#1769FF] transition-colors">
+                    {featuredProject.title}
+                  </h3>
+
+                  <p className="text-slate-600 text-sm leading-relaxed mb-5">
+                    {featuredProject.description}
+                  </p>
+
+                  <div className="space-y-2 mb-6">
+                    {featuredProject.highlights.map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-700">
+                        <CheckCircle2 className="w-4 h-4 text-[#1769FF] mt-0.5 shrink-0" strokeWidth={2.3} />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {featuredProject.techStack.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2.5 py-1 text-xs font-semibold rounded-md bg-[#EAF2FF] text-[#071A33] border border-[#1769FF]/15"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Actions */}
+                <div className="pt-4 border-t border-[#EAF2FF] flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    {featuredProject.liveUrl && featuredProject.liveUrl !== "#" ? (
+                      <a
+                        href={featuredProject.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1769FF] hover:bg-[#071A33] text-white font-bold text-xs shadow-xs transition"
+                      >
+                        <span>Live Demo</span>
+                        <ArrowUpRight className="w-4 h-4" strokeWidth={2.4} />
+                      </a>
+                    ) : (
+                      <span className="px-3.5 py-2 rounded-xl bg-slate-100 text-slate-500 font-semibold text-xs cursor-default">
+                        Internal PM Enterprises System
+                      </span>
+                    )}
+
+                    <a
+                      href={featuredProject.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-[#EAF2FF] hover:border-slate-400 text-slate-700 font-bold text-xs shadow-xs transition"
+                    >
+                      <Github className="w-4 h-4" strokeWidth={2.4} />
+                      <span>Code</span>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </motion.div>
+        )}
+
+        {/* 2. SECONDARY 2-COLUMN PROJECT SHOWCASE GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {gridProjects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white border border-[#EAF2FF] rounded-3xl overflow-hidden shadow-[0_8px_30px_rgba(7,26,51,0.04)] hover:border-[#1769FF]/40 hover:shadow-[0_16px_40px_rgba(23,105,255,0.12)] transition-all duration-300 flex flex-col justify-between group"
+            >
+              <div>
+                {/* Project Image Preview with Gradient Overlay */}
+                <div className="relative aspect-16/9 bg-slate-900 overflow-hidden border-b border-[#EAF2FF]">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071A33]/85 via-transparent to-transparent" />
+                  
+                  <div className="absolute top-3.5 left-3.5">
+                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/95 text-[#071A33] backdrop-blur-md shadow-xs border border-[#EAF2FF]">
+                      {project.badge}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 sm:p-7">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#1769FF] block mb-1">
+                    {project.tagline}
+                  </span>
+                  
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-[#071A33] group-hover:text-[#1769FF] transition-colors">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-slate-600 text-sm leading-relaxed mt-2.5 mb-5">
+                    {project.description}
+                  </p>
+
+                  {/* Bullet Highlights */}
+                  <div className="space-y-1.5 mb-5">
+                    {project.highlights.slice(0, 2).map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-2 text-xs text-slate-600">
+                        <CheckCircle2 className="w-4 h-4 text-[#1769FF] mt-0.5 shrink-0" strokeWidth={2.3} />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Tech stack pills */}
+                  <div className="flex flex-wrap gap-1.5 pt-4 border-t border-[#EAF2FF]">
+                    {project.techStack.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2.5 py-0.5 text-xs font-semibold rounded-md bg-[#EAF2FF] text-[#071A33]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="p-6 pt-0 flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2.5">
+                  {project.liveUrl && project.liveUrl !== "#" ? (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#1769FF] hover:bg-[#071A33] text-white font-bold text-xs shadow-xs transition"
+                    >
+                      <span>Live Demo</span>
+                      <ExternalLink className="w-4 h-4" strokeWidth={2.4} />
+                    </a>
+                  ) : (
+                    <span className="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-500 font-semibold text-xs cursor-default">
+                      Staging / Internal
+                    </span>
+                  )}
+
+                  {project.githubUrl ? (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-[#EAF2FF] font-bold text-xs shadow-xs transition"
+                    >
+                      <Github className="w-4 h-4" strokeWidth={2.4} />
+                      <span>Code</span>
+                    </a>
+                  ) : null}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
-};
-
-export default Projects;
+}

@@ -1,106 +1,185 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link as ScrollLink } from "react-scroll";
-import { IoMdMenu } from "react-icons/io";
+import { Menu, X, FileDown, Code2, Sparkles } from "lucide-react";
+import resumePdf from "../assets/images/YashikaResume.pdf";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const toggleSidebar = () => setIsOpen(!isOpen);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const toggleSidebar = () => setIsOpen((prev) => !prev);
+  const closeSidebar = () => setIsOpen(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { name: "Home", path: "home" },
     { name: "About", path: "about" },
-    { name: "Education", path: "education" },
-    { name: "Projects", path: "projects" },
     { name: "Skills", path: "skills" },
-    { name: "Contact Us", path: "contact" },
+    { name: "Projects", path: "projects" },
+    { name: "Experience", path: "experience" },
+    { name: "Education", path: "education" },
+    { name: "Contact", path: "contact" },
   ];
 
   return (
     <>
-      {/* HEADER */}
       <header
-        style={{
-          background: "linear-gradient(to right, #1a202c, #2d3748, #000000)",
-        }}
-        className="sticky top-0 z-50 w-full"
+        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+          isScrolled
+            ? "bg-white/85 backdrop-blur-xl border-b border-[#EAF2FF] shadow-[0_4px_24px_rgba(7,26,51,0.04)] py-2.5"
+            : "bg-white/60 backdrop-blur-md border-b border-transparent py-4"
+        }`}
       >
-        <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
-
-          {/* LOGO */}
-          <h1 className="text-[#f4f4f4] font-bold text-xl md:text-2xl">
-            Yashika Chauhan
-          </h1>
-
-          {/* MOBILE MENU */}
-          <button
-            onClick={toggleSidebar}
-            className="md:hidden text-white text-3xl focus:outline-none"
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          
+          {/* BRAND / LOGO */}
+          <ScrollLink
+            to="home"
+            smooth={true}
+            duration={500}
+            offset={-80}
+            className="flex items-center gap-3 cursor-pointer group"
           >
-            <IoMdMenu />
-          </button>
+            <div className="relative">
+              <div className="w-10 h-10 rounded-xl bg-[#071A33] border border-[#1769FF]/30 flex items-center justify-center text-white font-bold text-base shadow-[0_4px_12px_rgba(23,105,255,0.2)] group-hover:border-[#1769FF] group-hover:scale-105 transition-all duration-300">
+                <span className="text-white font-extrabold text-sm tracking-tight">YC</span>
+              </div>
+              <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#1769FF] border-2 border-white animate-pulse" />
+            </div>
 
-          {/* DESKTOP NAV */}
-          <nav className="hidden md:block">
-            <ul className="flex items-center gap-6 lg:gap-12">
+            <div className="flex flex-col">
+              <span className="text-[#071A33] font-bold text-base sm:text-lg tracking-tight leading-none group-hover:text-[#1769FF] transition-colors">
+                Yashika Chauhan
+              </span>
+              <span className="text-slate-500 text-[11px] font-semibold tracking-wider uppercase mt-1">
+                Full Stack Developer
+              </span>
+            </div>
+          </ScrollLink>
+
+          {/* DESKTOP NAV ITEMS */}
+          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2">
+            <ul className="flex items-center gap-1 p-1 rounded-full bg-slate-50/80 border border-[#EAF2FF] text-xs font-semibold">
               {navItems.map((item) => (
-                <li key={item.path} className="relative group">
+                <li key={item.path}>
                   <ScrollLink
                     to={item.path}
-                    smooth
+                    smooth={true}
                     duration={500}
-                    offset={-70}
-                    spy
-                    activeClass="text-[#fcbb38]"
-                    className="text-white font-semibold cursor-pointer transition-colors"
+                    offset={-80}
+                    spy={true}
+                    activeClass="!text-[#1769FF] !bg-white !shadow-xs font-bold"
+                    className="px-3.5 py-1.5 rounded-full text-slate-600 hover:text-[#1769FF] hover:bg-white/80 cursor-pointer transition-all duration-200 block"
                   >
                     {item.name}
                   </ScrollLink>
-
-                  {/* underline */}
-                  <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#fcbb38] transition-all duration-300 group-hover:w-full" />
                 </li>
               ))}
             </ul>
+
+            {/* Premium Resume Button */}
+            <div className="pl-3 xl:pl-4">
+              <a
+                href={resumePdf}
+                download="Yashika_Chauhan_Resume.pdf"
+                className="group relative inline-flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-full bg-[#1769FF] hover:bg-[#071A33] text-white shadow-[0_4px_14px_rgba(23,105,255,0.3)] hover:shadow-[0_6px_20px_rgba(7,26,51,0.25)] active:scale-95 transition-all duration-300"
+              >
+                <FileDown className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform" />
+                <span>Resume</span>
+              </a>
+            </div>
           </nav>
+
+          {/* MOBILE CONTROLS */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <a
+              href={resumePdf}
+              download="Yashika_Chauhan_Resume.pdf"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-full bg-[#1769FF] text-white shadow-xs"
+            >
+              <FileDown className="w-3 h-3" />
+              <span>Resume</span>
+            </a>
+            <button
+              onClick={toggleSidebar}
+              aria-label="Toggle navigation"
+              className="p-2 rounded-xl text-[#071A33] hover:bg-[#EAF2FF] transition-colors"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </header>
 
-      {/* SIDEBAR */}
+      {/* MOBILE DRAWER */}
       <div
-        className={`fixed top-0 left-0 w-64 h-full bg-gray-900 text-white p-6 transform transition-transform duration-300 z-50 ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed inset-y-0 right-0 w-72 bg-white/95 backdrop-blur-2xl shadow-2xl z-50 p-6 flex flex-col justify-between transform transition-transform duration-300 ease-in-out border-l border-[#EAF2FF] lg:hidden ${
+          isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <button
-          onClick={toggleSidebar}
-          className="absolute top-4 right-4 text-white text-2xl"
-        >
-          ✖
-        </button>
+        <div>
+          <div className="flex items-center justify-between pb-4 border-b border-[#EAF2FF]">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg bg-[#071A33] flex items-center justify-center text-white font-bold text-xs">
+                YC
+              </div>
+              <span className="font-bold text-[#071A33] text-sm">Portfolio Menu</span>
+            </div>
+            <button
+              onClick={closeSidebar}
+              className="p-1.5 rounded-lg text-slate-500 hover:bg-[#EAF2FF] hover:text-[#071A33]"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
 
-        <ul className="mt-16 space-y-5">
-          {navItems.map((item) => (
-            <li key={item.path}>
-              <ScrollLink
-                to={item.path}
-                smooth
-                duration={500}
-                offset={-70}
-                onClick={toggleSidebar}
-                className="block px-3 py-2 rounded hover:bg-gray-700 cursor-pointer transition"
-              >
-                {item.name}
-              </ScrollLink>
-            </li>
-          ))}
-        </ul>
+          <ul className="mt-6 space-y-2">
+            {navItems.map((item) => (
+              <li key={item.path}>
+                <ScrollLink
+                  to={item.path}
+                  smooth={true}
+                  duration={500}
+                  offset={-80}
+                  onClick={closeSidebar}
+                  spy={true}
+                  activeClass="!bg-[#EAF2FF] !text-[#1769FF] !border-[#1769FF]/40 font-bold"
+                  className="flex items-center justify-between px-4 py-2.5 rounded-xl border border-transparent text-[#071A33] hover:bg-slate-50 font-semibold text-sm cursor-pointer transition-colors"
+                >
+                  <span>{item.name}</span>
+                </ScrollLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="pt-6 border-t border-[#EAF2FF]">
+          <a
+            href={resumePdf}
+            download="Yashika_Chauhan_Resume.pdf"
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#1769FF] text-white font-bold text-sm shadow-[0_4px_16px_rgba(23,105,255,0.3)] hover:bg-[#071A33] transition"
+          >
+            <FileDown className="w-4 h-4" />
+            Download Resume (PDF)
+          </a>
+          <p className="text-center text-xs text-slate-400 mt-3 font-medium">
+            Open for internships & full-time roles
+          </p>
+        </div>
       </div>
 
-      {/* OVERLAY */}
+      {/* BACKDROP OVERLAY */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black opacity-50 z-40"
-          onClick={toggleSidebar}
+          className="fixed inset-0 bg-[#071A33]/30 backdrop-blur-xs z-40 lg:hidden transition-opacity"
+          onClick={closeSidebar}
         />
       )}
     </>

@@ -1,23 +1,99 @@
-.container {
-  
-  width: 100%; 
-  margin: 0 auto; 
-margin-top:30px;
+/* ==========================================================================
+   PREMIUM SAAS & DEVELOPER PORTFOLIO UTILITIES
+   Colors: Deep Navy (#071A33), Royal Blue (#1769FF), Bright Blue (#3B82F6), Soft Blue (#EAF2FF), White (#FFFFFF)
+   ========================================================================== */
 
- 
+/* Subtle Engineering Grid Background */
+.bg-grid-mesh {
+  background-image: linear-gradient(to right, rgba(23, 105, 255, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(23, 105, 255, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
-.underline-offset-8 {
-  text-underline-offset: 8px;
+
+/* Micro Dot Pattern */
+.bg-dot-mesh {
+  background-image: radial-gradient(rgba(23, 105, 255, 0.1) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
 }
-.full-screen-black {
-  background-color: #000000;
-  /* bg-gradient-to-r from-gray-900 via-gray-800 to-black py-20 */
-  background: linear-gradient(to right, #1a202c, #2d3748, #000000); 
-  
-   /* background: linear-gradient(135deg, #000000, #001f3f); */
-  width: 100%;
-  /* height: 100vh; */
-  margin: 0;
-  padding: 0;
-  
+
+/* Radiant Soft Glow Blob */
+.glow-royal-blue {
+  background: radial-gradient(circle, rgba(23, 105, 255, 0.14) 0%, rgba(59, 130, 246, 0.06) 45%, transparent 70%);
+}
+
+.glow-navy {
+  background: radial-gradient(circle, rgba(7, 26, 51, 0.08) 0%, transparent 70%);
+}
+
+/* Electric Gradient Texts */
+.text-gradient-royal {
+  background: linear-gradient(135deg, #1769FF 0%, #3B82F6 50%, #071A33 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-electric {
+  background: linear-gradient(135deg, #071A33 0%, #1769FF 65%, #3B82F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-blue-pure {
+  background: linear-gradient(135deg, #1769FF 0%, #3B82F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Premium SaaS Card Surface */
+.card-premium {
+  background: #FFFFFF;
+  border: 1px solid #EAF2FF;
+  box-shadow: 0 4px 20px -2px rgba(7, 26, 51, 0.04), 0 2px 6px -1px rgba(23, 105, 255, 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-premium:hover {
+  transform: translateY(-4px);
+  border-color: #BFDBFE;
+  box-shadow: 0 20px 35px -10px rgba(23, 105, 255, 0.12), 0 4px 12px -2px rgba(7, 26, 51, 0.04);
+}
+
+/* Glassmorphism Surface */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(234, 242, 255, 0.9);
+}
+
+/* Floating animation helper */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 6s ease-in-out infinite;
+}
+
+/* Pulse Glow Ring */
+.ring-glow-blue {
+  box-shadow: 0 0 0 4px rgba(23, 105, 255, 0.15);
 }
